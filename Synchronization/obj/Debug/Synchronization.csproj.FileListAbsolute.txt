@@ -1,0 +1,6 @@
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\bin\Debug\Synchronization.exe.config
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\bin\Debug\Synchronization.exe
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\bin\Debug\Synchronization.pdb
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\obj\Debug\Synchronization.csprojResolveAssemblyReference.cache
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\obj\Debug\Synchronization.exe
+c:\users\jwoo\documents\visual studio 2015\Projects\Synchronization\Synchronization\obj\Debug\Synchronization.pdb
