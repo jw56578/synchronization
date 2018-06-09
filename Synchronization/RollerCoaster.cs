@@ -58,8 +58,7 @@ namespace Synchronization
             while (true)
             {
                 //i am ready to board but i cannot board until the car is ready for loading
-                //3 threads could reach this point before the car loads, 
-                //how does car block those threads without blocking itself
+                // threads could reach this point before the car loads, 
                 //i think that passenger has to block itself
                 //1) all passenger threads are blocked by this semaphore that is ZERO
                 loadSem.WaitOne();
@@ -108,10 +107,9 @@ namespace Synchronization
         {
             while (true)
             {
-                //I am ready to take passengers in
-                //i need to block on a semaphore 
-                Console.WriteLine("");
+                
                 Console.Write("Load - ");
+                //after doing whatever Load does, I am ready to take passengers in
                 //2) release C passengers to LOAD up
                 for (int i = 0; i < C; i++) {
                     loadSem.Release();

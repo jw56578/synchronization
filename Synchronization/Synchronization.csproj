@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Baboon.cs" />
     <Compile Include="H20.cs" />
     <Compile Include="Philosopher.cs" />
     <Compile Include="ProducerConsumer\Consumer.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ReaderWriter.cs" />
     <Compile Include="ReaderWriter2.cs" />
     <Compile Include="RollerCoaster.cs" />
+    <Compile Include="SantaClause.cs" />
     <Compile Include="Semaphore.cs" />
   </ItemGroup>
   <ItemGroup>
