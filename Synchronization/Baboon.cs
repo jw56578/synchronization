@@ -31,9 +31,6 @@ namespace Synchronization
     semaphore for crossing - allow 0 resources
     if an opposite baboon sees that there is a baboon crossing, then block on this semaphore
 
-    how does this work if Baboon is one functionn and if you block then everything else will be blocked
-
-    will it work if the thread goes to another function
      */
 
     public class Baboon
@@ -49,6 +46,7 @@ namespace Synchronization
         static int waitingToGoRight = 0;
         static int waitingToGoLeft = 0;
         int myDirection = 0;
+        static int numberThatHaveCrossed = 0;
 
 
         public Baboon(int direction, Semaphore blockLeft,Semaphore blockRight, Mutex mutex)
@@ -77,8 +75,13 @@ namespace Synchronization
                     //going left is never getting up to 5 because they are crossing to fast
                     //still need a solution for breaking the flow and allowing threads on the right to get through
                     //what is this solution?
-                    if ((waitingToGoRight > 0 && goingLeft >= 5) || goingRight > 0)
+                    //how do you make a determination that it is time for right to go
+                    //should there just be a counter for how many lefts have gone???
+                    if (numberThatHaveCrossed >= 5 || goingRight > 0)
                     {
+                        numberThatHaveCrossed = 0;
+                        //how does this indicate that the other direction can now go
+                        //this logic probably has to go after crossing has been done
                         waitingToGoLeft++;
                         //this needs to be released before you block the semaphore or deadlock occurs
                         mutex.ReleaseMutex();
@@ -89,6 +92,7 @@ namespace Synchronization
                     else
                     {
                         goingLeft++;
+                        numberThatHaveCrossed++;
                         mutex.ReleaseMutex();
                         
                     }
@@ -96,8 +100,9 @@ namespace Synchronization
                 else
                 {
                     
-                    if (waitingToGoLeft > 0 &&  goingRight >= 5 || goingLeft > 0)
+                    if (numberThatHaveCrossed >= 5 || goingLeft > 0)
                     {
+                        numberThatHaveCrossed = 0;
                         waitingToGoRight++;
                         //this needs to be released before you block the semaphore or deadlock occurs
                         mutex.ReleaseMutex();
@@ -107,6 +112,7 @@ namespace Synchronization
                     else
                     {
                         goingRight++;
+                        numberThatHaveCrossed++;
                         mutex.ReleaseMutex();
                        
                     }
